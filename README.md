@@ -9,7 +9,7 @@ To run this project, you'll need Docker and Docker Compose installed on your sys
 
 ## Installation
 1. Clone this repository to your local machine:</br>
-`git clone "URL"`
+`git clone https://github.com/Mariusz225/company_info_rest_api.git`
 2. Navigate to the project directory:<br/>
 `cd company-info-rest-api`
 3. Build and start the Docker containers:</br>
