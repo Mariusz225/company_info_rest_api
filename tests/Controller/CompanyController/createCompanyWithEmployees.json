@@ -1,0 +1,24 @@
+{
+  "company": {
+    "name": "Company name",
+    "nip": "0000000000",
+    "address": "Company address",
+    "city": "Company city",
+    "postcode": "123-321",
+    "employees": [
+      {
+        "employee": {
+          "name": "name1",
+          "surname": "name1",
+          "email": "email1@gmail.com"
+        }
+      }, {
+        "employee": {
+          "name": "name2",
+          "surname": "name2",
+          "email": "email2@gmail.com"
+        }
+      }
+    ]
+  }
+}

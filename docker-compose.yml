@@ -1,0 +1,43 @@
+version: "3"
+
+services:
+  http:
+    image: "nginx"
+    links:
+      - php
+    ports:
+      - "8080:80"
+    volumes:
+      - "${SRC}:${WORKDIR}"
+      - ./docker/nginx/conf.d:/etc/nginx/conf.d:cached
+
+  php:
+    build: "docker/php"
+    working_dir: "${WORKDIR}"
+    links:
+      - db
+    volumes:
+      - ./docker/php/php.ini:/usr/local/etc/php/conf.d/php-override.ini
+      - "${SRC}:${WORKDIR}"
+
+  db:
+    image: "mariadb:10"
+    working_dir: "${WORKDIR}"
+    ports:
+      - "3306:3306"
+    volumes:
+      - "dbdata:/var/lib/mysql:delegated"
+      - "${SRC}:${WORKDIR}"
+    environment:
+      MYSQL_ROOT_PASSWORD: dev
+    command: mysqld --innodb-buffer-pool-size=2G
+
+  phpmyadmin:
+    image: "phpmyadmin/phpmyadmin"
+    ports:
+      - "8081:80"
+    links:
+      - db
+
+volumes:
+  dbdata:
